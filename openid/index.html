@@ -1,0 +1,80 @@
+<html>
+
+<head></head>
+
+<body>
+
+<a href = "https://accounts.practo.com/openidserver?
+openid.assoc_handle=KuchbhiSecureSa&
+openid.ax.mode=fetch_request&
+openid.ax.required=ext0,ext1,ext2,ext3,ext4,ext5,ext6,ext7,ext8&
+openid.ax.type.ext0=http://axschema.org/contact/email&
+openid.ax.type.ext1=http://axschema.org/namePerson&
+openid.ax.type.ext2=http://schema.openid.net/contact/phone&
+openid.ax.type.ext3=http://axschema.org/gender&
+openid.ax.type.ext4=http://axschema.org/birthdate&
+openid.ax.type.ext5=http://axschema.org/contact/postaladdress/line1&
+openid.ax.type.ext6=http://axschema.org/contact/postaladdress/line2&
+openid.ax.type.ext7=http://axschema.org/contact/city&
+openid.ax.type.ext8=http://axschema.org/contact/postalcode&
+openid.claimed_id=http://specs.openid.net/auth/2.0/identifier_select&
+openid.identity=http://specs.openid.net/auth/2.0/identifier_select&
+openid.mode=checkid_setup&
+openid.ns=http://specs.openid.net/auth/2.0&
+openid.ns.ax=http://openid.net/srv/ax/1.0&
+openid.ns.sreg=http://openid.net/extensions/sreg/1.1&
+openid.return_to=http://localhost:8000&
+openid_complete=yes&
+openid.sreg.required=fname,email">  link </a>
+
+
+<p id = "demo"> </p>
+
+
+
+<script>
+		function getParameterByName(name, url) {
+    		if (!url) url = window.location.href;
+    		name = name.replace(/[\[\]]/g, "\\$&");
+    		var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+       		results = regex.exec(url);
+   			if (!results) return null;
+    		if (!results[2]) return '';
+   			return decodeURIComponent(results[2].replace(/\+/g, " "));
+		}
+
+
+	var link = window.location.href;
+	var newlink = decodeURIComponent(link);
+	document.getElementById("demo").innerHTML = newlink;
+	var email = getParameterByName('openid.sreg.email', newlink);
+	email = email.slice(0, email.length - 1);
+	if(email)
+		document.getElementById("demo").innerHTML = "Your email is " + email;
+	var signature = getParameterByName('openid.sig', newlink);
+	if(signature)
+		document.getElementById("demo").innerHTML += "<br> Your generated security signature is " + signature;
+	var prefix = 'openid.ax.value.ext';
+	var suffix = '.1';
+	if(email) {
+		for(var i = 0; i < 9; i++) {
+			var s = prefix + i + suffix;
+			console.log(s);
+			document.getElementById("demo").innerHTML += "  <br> " + getParameterByName(s, newlink);;
+		}
+	} 
+
+</script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+

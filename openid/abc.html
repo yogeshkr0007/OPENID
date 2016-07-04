@@ -1,0 +1,40 @@
+<html>
+
+<head></head>
+
+<body>
+
+<a href = "https://accounts.practo.com/openidserver?
+openid.assoc_handle={HMAC-SHA1}{57554fc5}{Rj1xAA==}&
+openid.ax.mode=fetch_request&
+openid.ax.required=ext0,ext1,ext2,ext3,ext4,ext5&
+openid.ax.type.ext0=http://axschema.org/contact/email&
+openid.ax.type.ext1=http://axschema.org/namePerson&
+openid.ax.type.ext2=http://schema.openid.net/contact/email&
+openid.ax.type.ext3=http://axschema.org/namePerson/first&
+openid.ax.type.ext4=http://axschema.org/namePerson/last&
+openid.ax.type.ext5=http://schema.openid.net/namePerson&
+openid.claimed_id=http://specs.openid.net/auth/2.0/identifier_select&
+openid.identity=http://specs.openid.net/auth/2.0/identifier_select&
+openid.mode=checkid_setup&
+openid.ns=http://specs.openid.net/auth/2.0&
+openid.ns.ax=http://openid.net/srv/ax/1.0&
+openid.ns.sreg=http://openid.net/extensions/sreg/1.1&
+openid.return_to=https://practo-order.local:3001&
+openid_complete=yes&
+openid.sreg.required=fullname,email">  link </a>
+
+<p id = "demo"> </p>
+
+<script>
+
+var link = window.location.href;
+link = decodeURI(link);
+
+console.log(link);
+
+</script>
+
+</body>
+
+</html>
